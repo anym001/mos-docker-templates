@@ -1,6 +1,6 @@
 {
   "name": "bitcoind",
-  "repo": "ghcr.io/anym001/bitcoind:latest",
+  "repo": "ghcr.io/anym001/docker-bitcoind:latest",
   "registry": "https://github.com/anym001/docker-bitcoind/pkgs/container/docker-bitcoind",
   "network": "bridge",
   "custom_ip": null,
