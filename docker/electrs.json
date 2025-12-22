@@ -1,5 +1,5 @@
 {
-  "name": "electrs
+  "name": "electrs",
   "repo": "ghcr.io/anym001/electrs:latest",
   "registry": "https://ghcr.io/",
   "network": "bridge",
