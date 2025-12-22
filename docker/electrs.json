@@ -1,7 +1,7 @@
 {
   "name": "electrs",
   "repo": "ghcr.io/anym001/electrs:latest",
-  "registry": "https://ghcr.io/",
+  "registry": "https://github.com/anym001/docker-electrs/pkgs/container/docker-electrs",
   "network": "bridge",
   "custom_ip": null,
   "default_shell": "sh",
