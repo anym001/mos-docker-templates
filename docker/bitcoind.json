@@ -4,7 +4,7 @@
   "registry": "https://ghcr.io/",
   "network": "bridge",
   "custom_ip": null,
-  "default_shell": "sh",
+  "default_shell": "bash",
   "privileged": false,
   "extra_parameters": null,
   "post_parameters": null,
@@ -12,7 +12,7 @@
   "icon": "https://raw.githubusercontent.com/anym001/unraid-docker-templates/main/anym001/images/bitcoin.png",
   "project": "https://github.com/bitcoin/bitcoin",
   "support": "",
-  "description": "",
+  "description": "Run your own Bitcoin node and contribute to the decentralization of the Bitcoin network!\nThis template deploys a full bitcoind instance based on Bitcoin Core. (https://bitcoin.org)\n\nTo allow other nodes to connect to your instance, make sure port 8333 on your router is forwarded to the container’s P2P port configured below.\n\nFor full customization, create a bitcoin.conf file inside the data directory. You can reference Bitcoin Core’s example configuration for available options and advanced settings.\nExample: https://github.com/bitcoin/bitcoin/blob/master/share/examples/bitcoin.conf",
   "paths": [
     {
       "name": "Volume 1",
@@ -48,7 +48,7 @@
       "name": "PUID",
       "key": "PUID",
       "value": null,
-      "description": "",
+      "description": "User ID to run the container as",
       "required": false,
       "mask": false
     },
@@ -56,7 +56,7 @@
       "name": "GUID",
       "key": "GUID",
       "value": null,
-      "description": "",
+      "description": "Group ID to run the container as",
       "required": false,
       "mask": false
     },
@@ -64,7 +64,7 @@
       "name": "UMASK",
       "key": "UMASK",
       "value": "002",
-      "description": "",
+      "description": "Default permission mask for new files",
       "required": false,
       "mask": false
     }
