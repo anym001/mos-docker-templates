@@ -1,2 +1,1 @@
-# docker-json-templates
-Docker JSON templates
+# mos-docker-templates
