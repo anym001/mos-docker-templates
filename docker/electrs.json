@@ -46,7 +46,7 @@
     {
       "name": "PUID",
       "key": "PUID",
-      "value": null,
+      "value": "500",
       "description": "User ID to run the container as",
       "required": false,
       "mask": false
@@ -54,7 +54,7 @@
     {
       "name": "GUID",
       "key": "GUID",
-      "value": null,
+      "value": "500",
       "description": "Group ID to run the container as",
       "required": false,
       "mask": false
