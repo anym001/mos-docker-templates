@@ -1,0 +1,49 @@
+{
+  "name": "teddycloud",
+  "repo": "ghcr.io/toniebox-reverse-engineering/teddycloud:latest",
+  "registry": "https://github.com/toniebox-reverse-engineering/teddycloud/pkgs/container/teddycloud",
+  "network": "bridge",
+  "custom_ip": null,
+  "default_shell": "sh",
+  "privileged": false,
+  "extra_parameters": null,
+  "post_parameters": null,
+  "web_ui_url": "",
+  "icon": "https://raw.githubusercontent.com/selfhosters/unRAID-CA-templates/master/templates/img/teddycloud.png",
+  "project": "https://github.com/toniebox-reverse-engineering/teddycloud",
+  "support": "",
+  "description": "teddyCloud is an alternative server for your Toniebox, allowing you to host the cloud services locally. This gives you control over which data is sent to the original manufacturer’s cloud and allows you to host your own figurine audio files on, for example, your NAS or any other server.",
+  "paths": [
+    {
+      "name": "Data Path",
+      "host": "/mnt/cache/appdata/teddycloud",
+      "container": "/teddycloud",
+      "mode": "rw",
+      "description": "Data directory",
+      "required": true
+    }
+  ],
+  "ports": [
+    {
+      "name": "WebGUI",
+      "host": "8080",
+      "container": "80",
+      "protocol": "tcp",
+      "description": "This an optional port for the webui of teddycloud",
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "SSL-Certs",
+      "host": "8443",
+      "container": "443",
+      "protocol": "tcp",
+      "description": "Required PORT to get certificates",
+      "required": true,
+      "mask": false
+    }
+  ],
+  "variables": [],
+  "devices": [],
+  "labels": []
+}
