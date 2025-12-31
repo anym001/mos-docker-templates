@@ -1,5 +1,5 @@
 {
-  "name": "Portfolio-Performance",
+  "name": "portfolio-performance",
   "repo": "ghcr.io/ich777/portfolio-performance",
   "registry": "https://hub.docker.com/r/ich777/portfolio-performance",
   "network": "bridge",
