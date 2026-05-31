@@ -73,6 +73,22 @@
       "description": "Container timezone",
       "required": false,
       "mask": false
+    },
+    {
+      "name": "DEFAULT_LOCALE",
+      "key": "DEFAULT_LOCALE",
+      "value": "de-DE",
+      "description": "Default locale for new accounts (BCP-47, e.g. de-DE, de-AT, de-CH, en-GB, en-US). Each user can override it.",
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "DEFAULT_CURRENCY",
+      "key": "DEFAULT_CURRENCY",
+      "value": "EUR",
+      "description": "Default currency for new accounts (ISO 4217, e.g. EUR, USD, GBP, CHF, JPY). Display-only, per-user overridable.",
+      "required": false,
+      "mask": false
     }
   ],
   "devices": [],
