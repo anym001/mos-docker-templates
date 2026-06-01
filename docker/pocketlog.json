@@ -12,8 +12,17 @@
   "icon": "https://raw.githubusercontent.com/anym001/pocketlog/main/frontend/icons/icon-512.png",
   "project": "https://github.com/anym001/pocketlog",
   "support": "",
-  "description": "PocketLog is a self-hosted budget book (household finances) Progressive Web App. It runs in the browser on all common platforms and can be installed to the homescreen as an app.\n\nDesigned for private self-hosting: your data lives exclusively in your own MariaDB, the app runs in your own container. All assets (fonts, icons, JS libraries) are served from your own origin - no CDN calls, no external connections, no tracking, no telemetry.\n\nFeatures: income & expense transactions with categories and tags, reports & charts, full-text search, CSV import/export, offline support, light/dark themes, multi-user with its own username/password login and brute-force protection.\n\n**ATTENTION:** An external MariaDB 10.6+ instance is required. Create a database and user, then set the DB_* variables below. On first launch open the WebUI to create the initial admin account.",
-  "paths": [],
+  "description": "PocketLog is a self-hosted budget book (household finances) Progressive Web App. It runs in the browser on all common platforms and can be installed to the homescreen as an app.\n\nDesigned for private self-hosting: your data lives exclusively on your own server. By default PocketLog uses an embedded SQLite database (no separate database needed) - just map the /config volume so your data survives container updates. An external MariaDB is optional. The app runs in your own container. All assets (fonts, icons, JS libraries) are served from your own origin - no CDN calls, no external connections, no tracking, no telemetry.\n\nFeatures: income & expense transactions with categories and tags, reports & charts, full-text search, CSV import/export, offline support, light/dark themes, multi-user with its own username/password login and brute-force protection.\n\n**Storage:** By default the SQLite database lives at /config/db/pocketlog.db - map /config to a host directory to persist it. Use PUID/PGID to control file ownership (Unraid: 99/100).\n\n**Optional MariaDB:** To use an external MariaDB 10.6+ instead, create a database and user and set the DB_* variables below. Setting any DB_* variable switches PocketLog from SQLite to MariaDB; DB_PASSWORD is then required.\n\nOn first launch open the WebUI to create the initial admin account.",
+  "paths": [
+    {
+      "name": "config",
+      "host": "/mnt/cache/appdata/pocketlog",
+      "container": "/config",
+      "mode": "rw",
+      "description": "Persistent app directory. Holds the SQLite database (/config/db, unless an external MariaDB is used) and optional log files (/config/logs).",
+      "required": true
+    }
+  ],
   "ports": [
     {
       "name": "WebGUI",
@@ -27,44 +36,20 @@
   ],
   "variables": [
     {
-      "name": "DB_HOST",
-      "key": "DB_HOST",
-      "value": "mariadb",
-      "description": "Hostname or IP of the MariaDB instance",
-      "required": true,
+      "name": "PUID",
+      "key": "PUID",
+      "value": "1000",
+      "description": "Host user ID that owns the files under /config (Unraid: 99)",
+      "required": false,
       "mask": false
     },
     {
-      "name": "DB_PORT",
-      "key": "DB_PORT",
-      "value": "3306",
-      "description": "MariaDB port",
-      "required": true,
+      "name": "PGID",
+      "key": "PGID",
+      "value": "1000",
+      "description": "Host group ID for the files under /config (Unraid: 100)",
+      "required": false,
       "mask": false
-    },
-    {
-      "name": "DB_NAME",
-      "key": "DB_NAME",
-      "value": "pocketlog",
-      "description": "Database name",
-      "required": true,
-      "mask": false
-    },
-    {
-      "name": "DB_USER",
-      "key": "DB_USER",
-      "value": "pocketlog",
-      "description": "Database user",
-      "required": true,
-      "mask": false
-    },
-    {
-      "name": "DB_PASSWORD",
-      "key": "DB_PASSWORD",
-      "value": "",
-      "description": "Database password",
-      "required": true,
-      "mask": true
     },
     {
       "name": "TZ",
@@ -73,6 +58,46 @@
       "description": "Container timezone",
       "required": false,
       "mask": false
+    },
+    {
+      "name": "DB_HOST",
+      "key": "DB_HOST",
+      "value": "",
+      "description": "MariaDB option only: hostname or IP of the MariaDB instance. Setting any DB_* variable switches PocketLog from SQLite to MariaDB. Leave empty to use the embedded SQLite database.",
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "DB_PORT",
+      "key": "DB_PORT",
+      "value": "",
+      "description": "MariaDB option only: port (default 3306)",
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "DB_NAME",
+      "key": "DB_NAME",
+      "value": "",
+      "description": "MariaDB option only: database name (default pocketlog)",
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "DB_USER",
+      "key": "DB_USER",
+      "value": "",
+      "description": "MariaDB option only: database user (default pocketlog)",
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "DB_PASSWORD",
+      "key": "DB_PASSWORD",
+      "value": "",
+      "description": "MariaDB option only: database password. Required once any DB_* variable is set (MariaDB active).",
+      "required": false,
+      "mask": true
     },
     {
       "name": "DEFAULT_LOCALE",
