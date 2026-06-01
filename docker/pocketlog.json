@@ -60,14 +60,6 @@
       "mask": false
     },
     {
-      "name": "SQLITE_PATH",
-      "key": "SQLITE_PATH",
-      "value": "/config/db/pocketlog.db",
-      "description": "Path of the SQLite database file (only used when no DB_* variable is set)",
-      "required": false,
-      "mask": false
-    },
-    {
       "name": "DB_HOST",
       "key": "DB_HOST",
       "value": "",
