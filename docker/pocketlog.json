@@ -16,7 +16,7 @@
   "paths": [
     {
       "name": "config",
-      "host": "/mnt/user/appdata/pocketlog",
+      "host": "/mnt/cache/appdata/pocketlog",
       "container": "/config",
       "mode": "rw",
       "description": "Persistent app directory. Holds the SQLite database (/config/db, unless an external MariaDB is used) and optional log files (/config/logs).",
