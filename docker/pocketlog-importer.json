@@ -42,14 +42,6 @@
       "mask": true
     },
     {
-      "name": "POCKETLOG_BASE_URL",
-      "key": "POCKETLOG_BASE_URL",
-      "value": "",
-      "description": "Optional override of pocketlog.base_url from config.yaml, e.g. http://pocketlog:8000. Leave empty to use the value in config.yaml.",
-      "required": false,
-      "mask": false
-    },
-    {
       "name": "PUID",
       "key": "PUID",
       "value": "1000",
