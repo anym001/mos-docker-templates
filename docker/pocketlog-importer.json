@@ -50,14 +50,6 @@
       "mask": false
     },
     {
-      "name": "NOTIFY_TOKEN",
-      "key": "NOTIFY_TOKEN",
-      "value": "",
-      "description": "Optional application token for run-outcome push notifications (PushBits/Gotify). Only used when notify.url is set in config.yaml. Never stored in YAML.",
-      "required": false,
-      "mask": true
-    },
-    {
       "name": "PUID",
       "key": "PUID",
       "value": "1000",
@@ -78,46 +70,6 @@
       "key": "TZ",
       "value": "Europe/Berlin",
       "description": "Container timezone (affects the scheduler cron times)",
-      "required": false,
-      "mask": false
-    },
-    {
-      "name": "LOG_LEVEL",
-      "key": "LOG_LEVEL",
-      "value": "INFO",
-      "description": "Log verbosity (e.g. DEBUG, INFO, WARNING)",
-      "required": false,
-      "mask": false
-    },
-    {
-      "name": "LOG_FORMAT",
-      "key": "LOG_FORMAT",
-      "value": "text",
-      "description": "Log format: text (default) or json (one JSON object per line)",
-      "required": false,
-      "mask": false
-    },
-    {
-      "name": "LOG_FILE",
-      "key": "LOG_FILE",
-      "value": "",
-      "description": "Optional rotating log file path, e.g. /config/logs/importer.log. Leave empty to log to stderr only.",
-      "required": false,
-      "mask": false
-    },
-    {
-      "name": "LOG_FILE_MAX_BYTES",
-      "key": "LOG_FILE_MAX_BYTES",
-      "value": "1048576",
-      "description": "Rotation size in bytes for LOG_FILE (default 1 MiB)",
-      "required": false,
-      "mask": false
-    },
-    {
-      "name": "LOG_FILE_BACKUPS",
-      "key": "LOG_FILE_BACKUPS",
-      "value": "5",
-      "description": "Number of rotated LOG_FILE copies to keep",
       "required": false,
       "mask": false
     }
