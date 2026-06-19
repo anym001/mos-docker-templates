@@ -63,7 +63,7 @@
       "name": "TRUSTED_PROXIES",
       "key": "TRUSTED_PROXIES",
       "value": "",
-      "description": "IPs or CIDR ranges of trusted reverse proxies (e.g. 172.16.0.0/12), or * for all. Used to resolve the real client IP in the audit log. Leave empty when no proxy is in front.",
+      "description": "IPs or CIDR ranges of trusted reverse proxies, or * for all. Decides which sources may set X-Real-IP/X-Forwarded-For (audit log IP) and X-Forwarded-Proto (HTTPS detection). Empty trusts the standard private ranges, so a proxy on a Docker/LAN network works out of the box; set a value to narrow it to a specific proxy.",
       "required": false,
       "mask": false
     },
@@ -71,7 +71,7 @@
       "name": "SESSION_COOKIE_SECURE",
       "key": "SESSION_COOKIE_SECURE",
       "value": "auto",
-      "description": "Secure flag on session cookies. auto: detected via X-Forwarded-Proto (works for most setups). 1: always set. 0: never set.",
+      "description": "Secure flag on session cookies. auto: HTTPS detected via X-Forwarded-Proto from a trusted proxy (see TRUSTED_PROXIES), else the request scheme - works for most setups. 1: always set. 0: never set.",
       "required": false,
       "mask": false
     },
