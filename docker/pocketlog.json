@@ -68,6 +68,14 @@
       "mask": false
     },
     {
+      "name": "SESSION_COOKIE_SECURE",
+      "key": "SESSION_COOKIE_SECURE",
+      "value": "auto",
+      "description": "Controls the Secure flag on session cookies. auto (default): set when HTTPS is detected via X-Forwarded-Proto or the raw request scheme - works for direct HTTP and HTTPS-proxy setups without any change. 1: always set (use when your proxy does not forward X-Forwarded-Proto). 0: never set.",
+      "required": false,
+      "mask": false
+    },
+    {
       "name": "DB_HOST",
       "key": "DB_HOST",
       "value": "",
