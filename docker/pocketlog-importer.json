@@ -98,14 +98,6 @@
       "mask": false
     },
     {
-      "name": "LOG_FILE_MAX_BYTES",
-      "key": "LOG_FILE_MAX_BYTES",
-      "value": "",
-      "description": "Max size in bytes of the log file before rotation (only relevant if LOG_FILE is set). Leave empty for the application default.",
-      "required": false,
-      "mask": false
-    },
-    {
       "name": "LOG_FILE_BACKUPS",
       "key": "LOG_FILE_BACKUPS",
       "value": "",
