@@ -12,7 +12,7 @@
   "icon": "https://raw.githubusercontent.com/anym001/healthlog/main/assets/icons/icon-512.png",
   "project": "https://github.com/anym001/healthlog",
   "support": "",
-  "description": "HealthLog is a self-hosted, privacy-first analysis engine for your Apple Health data. It ingests exports from the Health Auto Export iOS app over HTTP and computes correlations, anomalies, trends and seasonality entirely on your own hardware - no cloud, no telemetry, no external connections.\n\nHow it works: Health Auto Export (or any client) POSTs JSON to the ingest endpoint on port 8000, authenticated with the INGEST_SECRET you set (sent as the X-Ingest-Token header). Samples are deduplicated and stored idempotently in a TimescaleDB/PostgreSQL database. A nightly job (ANALYSIS_CRON, default 03:30) runs the statistical pipeline with FDR-controlled correlations; results and optional LLM-generated narration reports are written under /config. Check the service with GET /api/health.\n\n**Database (required):** HealthLog needs an external TimescaleDB/PostgreSQL 16 database (recommended image timescale/timescaledb:2.17.2-pg16). Create a database and user, then set DATABASE_URL to the psycopg v3 connection string, e.g. postgresql+psycopg://healthlog:PASSWORD@HOST:5432/healthlog.\n\n**Storage:** Map /config to persist the optional config.yaml, the import/ backfill directory, narration/ reports and logs. Use PUID/PGID to control file ownership (Unraid: 99/100).\n\n**Optional config file:** Drop a config.yaml into /config to tune the analysis pipeline, your personal profile (birth year, sex, HR zones), workout load metrics, Ollama narration and push notifications. Changes are picked up automatically without a restart.\n\n**Optional endpoints:** Set API_DOCS_ENABLED=true for interactive API docs at /docs, and METRICS_ENABLED=true for a Prometheus /metrics endpoint (unauthenticated - trusted networks only). A Grafana dashboard is included in the project.",
+  "description": "HealthLog is a self-hosted, privacy-first analysis engine for your Apple Health data. It ingests exports from the Health Auto Export iOS app over HTTP and computes correlations, anomalies, trends and seasonality entirely on your own hardware - no cloud, no telemetry, no external connections.\n\nHow it works: Health Auto Export (or any client) POSTs JSON to the ingest endpoint on port 8000, authenticated with the INGEST_SECRET you set (sent as the X-Ingest-Token header). Samples are deduplicated and stored idempotently in a TimescaleDB/PostgreSQL database. A nightly job (ANALYSIS_CRON, default 03:30) runs the statistical pipeline with FDR-controlled correlations; results and optional LLM-generated narration reports are written under /config. Check the service with GET /api/health.\n\n**Database (required):** HealthLog needs an external TimescaleDB/PostgreSQL 16 database (recommended image timescale/timescaledb:2.17.2-pg16). Create a database and user, then set DATABASE_URL to the psycopg v3 connection string, e.g. postgresql+psycopg://healthlog:PASSWORD@HOST:5432/healthlog.\n\n**Storage:** Map /config to persist the optional config.yaml, the import/ backfill directory, narration/ reports and logs. Use PUID/PGID to control file ownership (Unraid: 99/100).\n\n**Optional config file:** Drop a config.yaml into /config to tune the analysis pipeline, your personal profile (birth year, sex, HR zones), workout load metrics, Ollama narration and push notifications. Changes are picked up automatically without a restart. A Grafana dashboard is included in the project.",
   "paths": [
     {
       "name": "config",
@@ -84,14 +84,6 @@
       "mask": false
     },
     {
-      "name": "MAX_PAYLOAD_BYTES",
-      "key": "MAX_PAYLOAD_BYTES",
-      "value": "33554432",
-      "description": "Maximum accepted ingest payload size in bytes (default 33554432 = 32 MiB).",
-      "required": false,
-      "mask": false
-    },
-    {
       "name": "LOG_LEVEL",
       "key": "LOG_LEVEL",
       "value": "INFO",
@@ -108,36 +100,12 @@
       "mask": false
     },
     {
-      "name": "METRICS_ENABLED",
-      "key": "METRICS_ENABLED",
-      "value": "false",
-      "description": "Expose the Prometheus /metrics endpoint. Unauthenticated - enable only on trusted networks.",
-      "required": false,
-      "mask": false
-    },
-    {
-      "name": "API_DOCS_ENABLED",
-      "key": "API_DOCS_ENABLED",
-      "value": "false",
-      "description": "Serve the interactive API docs at /docs, /redoc and /openapi.json.",
-      "required": false,
-      "mask": false
-    },
-    {
       "name": "CONFIG_FILE",
       "key": "CONFIG_FILE",
       "value": "/config/config.yaml",
       "description": "Path to the optional structured configuration file inside the container.",
       "required": false,
       "mask": false
-    },
-    {
-      "name": "NOTIFY_TOKEN",
-      "key": "NOTIFY_TOKEN",
-      "value": "",
-      "description": "Optional Gotify/PushBits application token for run-outcome push notifications (paired with notify settings in config.yaml).",
-      "required": false,
-      "mask": true
     }
   ],
   "devices": [],
