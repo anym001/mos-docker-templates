@@ -29,7 +29,7 @@
       "host": "8332",
       "container": "8332",
       "protocol": "tcp",
-      "description": "External port 8222 mapped to container port 8222",
+      "description": "External port 8332 mapped to container port 8332",
       "required": false,
       "mask": false
     },
@@ -53,8 +53,8 @@
       "mask": false
     },
     {
-      "name": "GUID",
-      "key": "GUID",
+      "name": "PGID",
+      "key": "PGID",
       "value": "500",
       "description": "Group ID to run the container as",
       "required": false,
@@ -65,6 +65,14 @@
       "key": "UMASK",
       "value": "002",
       "description": "Default permission mask for new files",
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "DATA_PERM",
+      "key": "DATA_PERM",
+      "value": "2770",
+      "description": "Permissions applied to the data directory.",
       "required": false,
       "mask": false
     }
