@@ -52,8 +52,8 @@
       "mask": false
     },
     {
-      "name": "GUID",
-      "key": "GUID",
+      "name": "PGID",
+      "key": "PGID",
       "value": "500",
       "description": "Group ID to run the container as",
       "required": false,

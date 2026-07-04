@@ -42,9 +42,17 @@
       "mask": true
     },
     {
+      "name": "POCKETLOG_BASE_URL",
+      "key": "POCKETLOG_BASE_URL",
+      "value": "",
+      "description": "Optional override of the PocketLog base URL used for the CSV import API (e.g. http://pocketlog:8000). If empty, the value from config.yaml (pocketlog.base_url) is used.",
+      "required": false,
+      "mask": false
+    },
+    {
       "name": "PUID",
       "key": "PUID",
-      "value": "1000",
+      "value": "500",
       "description": "Host user ID that owns the files under /config and /data (Unraid: 99)",
       "required": false,
       "mask": false
@@ -52,7 +60,7 @@
     {
       "name": "PGID",
       "key": "PGID",
-      "value": "1000",
+      "value": "500",
       "description": "Host group ID for the files under /config and /data (Unraid: 100)",
       "required": false,
       "mask": false
@@ -62,6 +70,30 @@
       "key": "TZ",
       "value": "Europe/Berlin",
       "description": "Container timezone (affects the scheduler cron times)",
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "LOG_LEVEL",
+      "key": "LOG_LEVEL",
+      "value": "INFO",
+      "description": "Log verbosity: DEBUG, INFO, WARNING or ERROR.",
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "LOG_FORMAT",
+      "key": "LOG_FORMAT",
+      "value": "text",
+      "description": "Log output format: text or json.",
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "LOG_FILE",
+      "key": "LOG_FILE",
+      "value": "",
+      "description": "Optional path to a log file inside /config/logs (e.g. /config/logs/pocketlog-importer.log). Leave empty to log to stdout only.",
       "required": false,
       "mask": false
     }
