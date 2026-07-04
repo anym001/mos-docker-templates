@@ -1,6 +1,6 @@
 # mos-docker-templates
 
-Docker-App-Store-Templates (JSON-Format) für MOS, gepflegt von [anym001](https://github.com/anym001).
+Docker-App-Store-Templates (JSON-Format) für [MOS](https://mos-official.net), gepflegt von [anym001](https://github.com/anym001).
 
 ## Enthaltene Templates
 
