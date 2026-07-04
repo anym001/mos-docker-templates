@@ -96,14 +96,6 @@
       "description": "Optional path to a log file inside /config/logs (e.g. /config/logs/pocketlog-importer.log). Leave empty to log to stdout only.",
       "required": false,
       "mask": false
-    },
-    {
-      "name": "LOG_FILE_BACKUPS",
-      "key": "LOG_FILE_BACKUPS",
-      "value": "",
-      "description": "Number of rotated log file backups to keep (only relevant if LOG_FILE is set). Leave empty for the application default.",
-      "required": false,
-      "mask": false
     }
   ],
   "devices": [],
