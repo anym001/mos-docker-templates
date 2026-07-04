@@ -12,7 +12,7 @@
   "icon": "https://raw.githubusercontent.com/anym001/healthlog/main/assets/icons/icon-512.png",
   "project": "https://github.com/anym001/healthlog",
   "support": "",
-  "description": "HealthLog is a self-hosted, privacy-first analysis engine for your Apple Health data. It ingests exports from the Health Auto Export iOS app over HTTP and computes correlations, anomalies, trends and seasonality entirely on your own hardware - no cloud, no telemetry, no external connections.\n\nHow it works: Health Auto Export (or any client) POSTs JSON to the ingest endpoint on port 8000, authenticated with the INGEST_SECRET you set (sent as the X-Ingest-Token header). Samples are deduplicated and stored idempotently in a TimescaleDB/PostgreSQL database. A nightly job (ANALYSIS_CRON, default 03:30) runs the statistical pipeline with FDR-controlled correlations; results and optional LLM-generated narration reports are written under /config. Check the service with GET /api/health.\n\n**Database (required):** HealthLog needs a TimescaleDB/PostgreSQL 16 database (recommended image timescale/timescaledb:2.17.2-pg16). Run it as a companion container named healthlog-db on the same Docker network, then set DATABASE_URL to the psycopg v3 connection string, e.g. postgresql+psycopg://healthlog:PASSWORD@healthlog-db:5432/healthlog.\n\n**Storage:** Map /config to persist the optional config.yaml, the import/ backfill directory, narration/ reports and logs. Use PUID/PGID to control file ownership (Unraid: 99/100).\n\n**Optional config file:** Drop a config.yaml into /config to tune the analysis pipeline, your personal profile (birth year, sex, HR zones), workout load metrics, Ollama narration and push notifications. Changes are picked up automatically without a restart. A Grafana dashboard is included in the project.",
+  "description": "HealthLog is a self-hosted, privacy-first analysis engine for your Apple Health data. It ingests exports from the Health Auto Export iOS app over HTTP and computes correlations, anomalies, trends and seasonality entirely on your own hardware - no cloud, no telemetry, no external connections.\n\nHow it works: Health Auto Export (or any client) POSTs JSON to the ingest endpoint (POST /api/ingest) on port 8000, authenticated with the INGEST_SECRET you set (sent as the X-Ingest-Token header). Samples are deduplicated and stored idempotently in a TimescaleDB/PostgreSQL database. A nightly job (ANALYSIS_CRON, default 03:30) runs the statistical pipeline with FDR-controlled correlations, GPS route/geo analysis and workout dashboards; results and optional LLM-generated narration reports are written under /config. Check the service with GET /api/health.\n\n**Database (required):** HealthLog needs a TimescaleDB/PostgreSQL 16 database (recommended image timescale/timescaledb:2.17.2-pg16). Run it as a companion container named healthlog-db on the same Docker network, then set DATABASE_URL to the psycopg v3 connection string, e.g. postgresql+psycopg://healthlog:PASSWORD@healthlog-db:5432/healthlog.\n\n**Storage:** Map /config to persist the optional config.yaml, the import/ backfill directory, narration/ reports and logs. Use PUID/PGID to control file ownership (Unraid: 99/100).\n\n**Optional config file:** Drop a config.yaml into /config to tune the analysis pipeline, your personal profile (birth year, sex, HR zones), workout load metrics, Ollama narration and push notifications. Changes are picked up automatically without a restart. A Grafana dashboard is included in the project.",
   "paths": [
     {
       "name": "config",
@@ -54,7 +54,7 @@
     {
       "name": "PUID",
       "key": "PUID",
-      "value": "1000",
+      "value": "500",
       "description": "Host user ID that owns the files under /config (Unraid: 99)",
       "required": false,
       "mask": false
@@ -62,7 +62,7 @@
     {
       "name": "PGID",
       "key": "PGID",
-      "value": "1000",
+      "value": "500",
       "description": "Host group ID for the files under /config (Unraid: 100)",
       "required": false,
       "mask": false
