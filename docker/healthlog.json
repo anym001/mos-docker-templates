@@ -76,6 +76,14 @@
       "mask": false
     },
     {
+      "name": "TRUSTED_PROXIES",
+      "key": "TRUSTED_PROXIES",
+      "value": "",
+      "description": "IPs or CIDR ranges of trusted reverse proxies, or * for all. Decides which sources may set X-Real-IP/X-Forwarded-For (client IP recorded for ingest requests) and X-Forwarded-Proto (HTTPS detection). Empty trusts the standard private ranges, so a proxy on a Docker/LAN network works out of the box; set a value to narrow it to a specific proxy.",
+      "required": false,
+      "mask": false
+    },
+    {
       "name": "ANALYSIS_CRON",
       "key": "ANALYSIS_CRON",
       "value": "30 3 * * *",
