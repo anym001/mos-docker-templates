@@ -76,6 +76,14 @@
       "mask": false
     },
     {
+      "name": "TRUSTED_PROXIES",
+      "key": "TRUSTED_PROXIES",
+      "value": "",
+      "description": "Reverse proxies trusted to set X-Real-IP/X-Forwarded-For for the audit client IP (comma-separated IPs/CIDRs, or * for all). Used only for the fail2ban-ready ingest-auth-failure log line, never for authorization. Empty trusts the standard private + loopback ranges, the usual container-behind-a-proxy-on-a-private-network setup.",
+      "required": false,
+      "mask": false
+    },
+    {
       "name": "ANALYSIS_CRON",
       "key": "ANALYSIS_CRON",
       "value": "30 3 * * *",
